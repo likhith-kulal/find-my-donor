@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Login</title>
+    <link rel="stylesheet" href="./login.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      #lottie-container {
+        width: 280px;
+        height: 280px;
+        margin: auto;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div id="lottie-container" style="width: 300px; height: 300px"></div>
+      <h2>Welcome Back</h2>
+      <p>Please sign in to continue</p>
+      <form>
+        <input id="email" type="email" placeholder="Email" required />
+        <div class="password-container">
+          <input
+            id="password"
+            type="password"
+            id="password"
+            placeholder="Password"
+            class="password"
+            required
+          />
+          <i
+            id="toggle-password-show"
+            class="fas fa-eye"
+            style="cursor: pointer"
+          ></i>
+          <i
+            id="toggle-password-hide"
+            class="fas fa-eye-slash"
+            style="cursor: pointer; display: none"
+          ></i>
+        </div>
+        <button id="submit" type="button">Login</button>
+      </form>
+      <div class="signup">Don't have an account? <a href="#">Sign up</a></div>
+    </div>
+
+    <script>
+      lottie.loadAnimation({
+        container: document.getElementById("lottie-container"),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "../assets/blood.json", // path to your local file
+      });
+    </script>
+    <script src="./login.js"></script>
+  </body>
+</html>

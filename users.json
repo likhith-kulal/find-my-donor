@@ -1,0 +1,20 @@
+{
+    "admins": {
+        "admin1": {
+            "email": "prem@p.jp",
+            "password": "admin123"
+        },
+        "admin2": {
+            "email": "newadmin@p.jp",
+            "password": "admin123"
+        },
+        "admin3": {
+            "email": "anotheradmin@p.jp",
+            "password": "admin123"
+        },
+        "admin4": {
+            "email": "lkkulal@fmd.com",
+            "password": "admin123"
+        }
+    }
+}

@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom right, #ffe5e5, #ffcccc);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.login-container {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem 1.5rem;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.6s ease-out;
+}
+
+@media (min-width: 768px) {
+  body {
+    align-items: center;
+  }
+
+  .login-container {
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  #lottie-container {
+    display: none;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 0.25rem;
+  color: #b71c1c;
+}
+
+p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 1.2rem;
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 1.2rem;
+  background: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #b71c1c;
+}
+
+.signup {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.signup a {
+  color: #d32f2f;
+  text-decoration: none;
+}
+
+.signup a:hover {
+  text-decoration: underline;
+}
+
+.password-container {
+  padding: 1.2rem;
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  display: flex;
+}
+
+.password {
+  border: none;
+  padding: unset;
+  margin: unset;
+  flex: 1;
+  outline: none;
+  padding-right: 1rem;
+}
