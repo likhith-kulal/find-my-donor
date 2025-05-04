@@ -17,13 +17,12 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 document.getElementById("submit").addEventListener("click", function () {
+  document.getElementById("invalid-warning").style.display = "none";
   // TODO: Add form validation here after completing the backend
 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const user = { email, password };
-
-  console.log("User data:", user);
 
   database
     .ref("donors-admin")
@@ -35,7 +34,7 @@ document.getElementById("submit").addEventListener("click", function () {
         window.localStorage.setItem("user", JSON.stringify(userData));
         window.location.href = "../index.html";
       } else {
-        console.error("No user found with the given email.");
+        document.getElementById("invalid-warning").style.display = "block";
       }
     })
     .catch((error) => {

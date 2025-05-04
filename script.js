@@ -65,111 +65,6 @@ window.addEventListener("click", (event) => {
   }
 });
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-    // alert("Geolocation is not supported by this browser.");
-  }
-}
-
-function showPosition(position) {
-  const lat = position.coords.latitude;
-  const lon = position.coords.longitude;
-  document.getElementById("locationField").value = `Lat: ${lat}, Lng: ${lon}`;
-}
-
-function showError(error) {
-  //   switch (error.code) {
-  //     case error.PERMISSION_DENIED:
-  //     //   alert("User denied the request for Geolocation.");
-  //       break;
-  //     case error.POSITION_UNAVAILABLE:
-  //     //   alert("Location information is unavailable.");
-  //       break;
-  //     case error.TIMEOUT:
-  //     //   alert("The request to get user location timed out.");
-  //       break;
-  //     case error.UNKNOWN_ERROR:
-  //     //   alert("An unknown error occurred.");
-  //       break;
-  //   }
-  document.getElementById("locationField").innerHTML = `India`;
-}
-
-document.getElementById("logout").addEventListener("click", function () {
-  window.localStorage.removeItem("user");
-  document.getElementById("add-donor").style.display = "none";
-  document.getElementById("logout").style.display = "none";
-  document.getElementById("login").style.display = "block";
-});
-
-document.getElementById("login").addEventListener("click", function () {
-  window.location.href = "pages/login.html";
-});
-
-document.getElementById("add-donor").addEventListener("click", function () {
-  window.location.href = "pages/add-donor.html";
-});
-
-function fetchDonors() {
-  database.ref("donors-list").once("value", (snapshot) => {
-    const donors = snapshot.val();
-    const donorList = document.getElementById("donor-list");
-    donorList.innerHTML = ""; // Clear existing list
-
-    const bloodGroup = document.getElementById("blood-group").value;
-
-    // console.log("Fetched donors:", bloodGroup);
-
-    for (const id in donors) {
-      const donor = donors[id];
-      if (donor.bloodGroup !== bloodGroup) {
-        continue; // Skip if blood group doesn't match
-      }
-      const donorItem = document.createElement("div");
-      donorItem.className = "donor-item";
-
-      const nameDiv = document.createElement("div");
-      nameDiv.className = "name";
-      nameDiv.textContent = donor.name;
-
-      const locationDiv = document.createElement("div");
-      locationDiv.className = "donar-location";
-      locationDiv.textContent = donor.location;
-
-      const contactDiv = document.createElement("div");
-      contactDiv.className = "contact-info";
-      const contactSpan = document.createElement("span");
-      contactSpan.textContent = donor.contactNumber;
-      contactDiv.appendChild(contactSpan);
-
-      donorItem.appendChild(nameDiv);
-      donorItem.appendChild(locationDiv);
-      donorItem.appendChild(contactDiv);
-
-      donorList.appendChild(donorItem);
-    }
-
-    if (donorList.children.length === 0) {
-      const noDonorsDiv = document.createElement("div");
-      noDonorsDiv.className = "no-donors";
-      noDonorsDiv.textContent = "No donors found for this blood group.";
-      noDonorsDiv.style.marginTop = "90px";
-      donorList.appendChild(noDonorsDiv);
-    }
-  });
-}
-
-function init() {
-  const user = window.localStorage.getItem("user");
-  if (user) {
-    document.getElementById("add-donor").style.display = "block";
-    document.getElementById("logout").style.display = "block";
-    document.getElementById("login").style.display = "none";
-  }
-}
-
 const locationList = [
   { id: 1, name: "Bantwala" },
   { id: 2, name: "Mangalore" },
@@ -222,6 +117,113 @@ const locationList = [
   { id: 49, name: "Naravi" },
   { id: 50, name: "Venur" },
 ];
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    // alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  document.getElementById("locationField").value = `Lat: ${lat}, Lng: ${lon}`;
+}
+
+function showError(error) {
+  //   switch (error.code) {
+  //     case error.PERMISSION_DENIED:
+  //     //   alert("User denied the request for Geolocation.");
+  //       break;
+  //     case error.POSITION_UNAVAILABLE:
+  //     //   alert("Location information is unavailable.");
+  //       break;
+  //     case error.TIMEOUT:
+  //     //   alert("The request to get user location timed out.");
+  //       break;
+  //     case error.UNKNOWN_ERROR:
+  //     //   alert("An unknown error occurred.");
+  //       break;
+  //   }
+  document.getElementById("locationField").innerHTML = `India`;
+}
+
+document.getElementById("logout").addEventListener("click", function () {
+  window.localStorage.removeItem("user");
+  document.getElementById("add-donor").style.display = "none";
+  document.getElementById("logout").style.display = "none";
+  document.getElementById("login").style.display = "block";
+});
+
+document.getElementById("login").addEventListener("click", function () {
+  window.location.href = "pages/login.html";
+});
+
+document.getElementById("add-donor").addEventListener("click", function () {
+  window.location.href = "pages/add-donor.html";
+});
+
+function fetchDonors() {
+  database.ref("donors-list").once("value", (snapshot) => {
+    let donors = [];
+    donors = snapshot.val();
+    const donorList = document.getElementById("donor-list");
+    donorList.innerHTML = ""; // Clear existing list
+
+    const bloodGroup = document.getElementById("blood-group").value;
+    const location = document.getElementById("location").value;
+
+    // console.log("Fetched donors:", bloodGroup);
+
+    for (const id in donors) {
+      const donor = donors[id];
+      if (donor.bloodGroup !== bloodGroup || donor.location !== location) {
+        continue; // Skip if blood group doesn't match
+      }
+      const donorItem = document.createElement("div");
+      donorItem.className = "donor-item";
+
+      const nameDiv = document.createElement("div");
+      nameDiv.className = "name";
+      nameDiv.textContent = donor.name;
+
+      const locationDiv = document.createElement("div");
+      locationDiv.className = "donar-location";
+      locationDiv.textContent = donor.location;
+
+      const contactDiv = document.createElement("div");
+      contactDiv.className = "contact-info";
+      const contactSpan = document.createElement("span");
+      contactSpan.textContent = donor.contactNumber;
+      contactDiv.appendChild(contactSpan);
+
+      donorItem.appendChild(nameDiv);
+      donorItem.appendChild(locationDiv);
+      donorItem.appendChild(contactDiv);
+
+      donorList.appendChild(donorItem);
+    }
+
+    if (donorList.children.length === 0) {
+      const noDonorsDiv = document.createElement("div");
+      noDonorsDiv.className = "no-donors";
+      noDonorsDiv.textContent = "No donors found for this blood group.";
+      noDonorsDiv.style.marginTop = "90px";
+      donorList.appendChild(noDonorsDiv);
+    }
+  });
+}
+
+function init() {
+  const user = window.localStorage.getItem("user");
+  if (user) {
+    document.getElementById("add-donor").style.display = "block";
+    document.getElementById("logout").style.display = "block";
+    document.getElementById("login").style.display = "none";
+  }
+}
 
 const locationSelect = document.getElementById("location");
 locationList.forEach((location) => {
