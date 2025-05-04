@@ -16,10 +16,7 @@
     <div class="header">
       <img src="./assets/blood-logo.png" alt="blood-logo" class="logo" />
       <a href="#" class="home">Home</a>
-      <a
-        href="/find-my-donor/pages/add-donars.html"
-        id="add-donor"
-        class="nav-link"
+      <a href="'/pages/add-donars.html" id="add-donor" class="nav-link"
         >Add Donar</a
       >
       <a href="#" id="logout" class="nav-link logout">Logout</a>
@@ -28,11 +25,14 @@
     <div class="container">
       <div class="left">
         <h1>FIND MY DONOR</h1>
-        <div class="current-location-info">
+        <!-- <div class="current-location-info">
           <div class="location">
             <i class="fas fa-location-dot"></i>&nbsp;&nbsp;
             <span id="locationField"></span>
           </div>
+        </div> -->
+        <div class="blood-group">
+          <select id="location" name="location"></select>
         </div>
         <div class="blood-group">
           <select id="blood-group" name="blood-group">
