@@ -233,8 +233,5 @@ locationList.forEach((location) => {
   locationSelect.appendChild(option);
 });
 locationSelect.value = locationList[0].name; // Select Id 1 (Bantwala) as default
-locationSelect.addEventListener("change", function () {
-  const selectedLocation = locationSelect.value;
-});
 
 init();
