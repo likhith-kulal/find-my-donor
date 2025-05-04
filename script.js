@@ -1,32 +1,32 @@
-// if (navigator.geolocation) {
-//   navigator.geolocation.getCurrentPosition(
-//     (position) => {
-//       const lat = position.coords.latitude;
-//       const lon = position.coords.longitude;
-//       console.log("Latitude:", lat);
-//       console.log("Longitude:", lon);
-//       alert("Hello, World!");
-//     },
-//     (error) => {
-//       alert("Hello, World! 123");
-//       switch (error.code) {
-//         case error.PERMISSION_DENIED:
-//           console.error("User denied the request for Geolocation.");
-//           break;
-//         case error.POSITION_UNAVAILABLE:
-//           console.error("Location information is unavailable.");
-//           break;
-//         case error.TIMEOUT:
-//           console.error("The request to get user location timed out.");
-//           break;
-//         case error.UNKNOWN_ERROR:
-//           console.error("An unknown error occurred.");
-//           break;
-//       }
-//       console.error("Full error object:", error);
-//     }
-//   );
-// }
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      console.log("Latitude:", lat);
+      console.log("Longitude:", lon);
+      alert("Hello, World!");
+    },
+    (error) => {
+      alert("Hello, World! 123");
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          console.error("User denied the request for Geolocation.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          console.error("Location information is unavailable.");
+          break;
+        case error.TIMEOUT:
+          console.error("The request to get user location timed out.");
+          break;
+        case error.UNKNOWN_ERROR:
+          console.error("An unknown error occurred.");
+          break;
+      }
+      console.error("Full error object:", error);
+    }
+  );
+}
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
